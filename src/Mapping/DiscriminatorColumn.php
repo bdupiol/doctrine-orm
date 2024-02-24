@@ -34,6 +34,12 @@ final class DiscriminatorColumn implements MappingAttribute
     public $length;
 
     /**
+     * @var mixed
+     * @readonly
+     */
+    public $onDelete;
+
+    /**
      * @var string|null
      * @readonly
      */
@@ -59,6 +65,7 @@ final class DiscriminatorColumn implements MappingAttribute
         ?string $name = null,
         ?string $type = null,
         ?int $length = null,
+        mixed $onDelete = null,
         ?string $columnDefinition = null,
         ?string $enumType = null,
         array $options = []
@@ -66,6 +73,7 @@ final class DiscriminatorColumn implements MappingAttribute
         $this->name             = $name;
         $this->type             = $type;
         $this->length           = $length;
+        $this->onDelete         = $onDelete;
         $this->columnDefinition = $columnDefinition;
         $this->enumType         = $enumType;
         $this->options          = $options;

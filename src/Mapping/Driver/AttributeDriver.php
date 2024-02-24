@@ -280,6 +280,7 @@ class AttributeDriver extends CompatibilityAnnotationDriver
                         'name' => isset($discrColumnAttribute->name) ? (string) $discrColumnAttribute->name : null,
                         'type' => isset($discrColumnAttribute->type) ? (string) $discrColumnAttribute->type : 'string',
                         'length' => isset($discrColumnAttribute->length) ? (int) $discrColumnAttribute->length : 255,
+                        'onDelete' => isset($discrColumnAttribute->onDelete) ? $discrColumnAttribute->onDelete : null,
                         'columnDefinition' => isset($discrColumnAttribute->columnDefinition) ? (string) $discrColumnAttribute->columnDefinition : null,
                         'enumType' => isset($discrColumnAttribute->enumType) ? (string) $discrColumnAttribute->enumType : null,
                     ];
