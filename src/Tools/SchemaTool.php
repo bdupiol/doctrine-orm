@@ -296,6 +296,13 @@ class SchemaTool
 
                     if ($inheritedKeyColumns !== []) {
                         // Add a FK constraint on the ID column
+                        $metadata = $this->em->getClassMetadata($class->rootEntityName);
+                        if ($metadata->discriminatorColumn['onDelete'] === null){
+                            $onDelete = 'CASCADE'; //default action
+                        }
+                        else {
+                            $onDelete = $this->platform->getForeignKeyReferentialActionSQL($metadata->discriminatorColumn['onDelete']);
+                        }
                         $table->addForeignKeyConstraint(
                             $this->quoteStrategy->getTableName(
                                 $this->em->getClassMetadata($class->rootEntityName),
@@ -303,7 +310,7 @@ class SchemaTool
                             ),
                             $inheritedKeyColumns,
                             $inheritedKeyColumns,
-                            ['onDelete' => 'CASCADE']
+                            ['onDelete' => $onDelete]
                         );
                     }
 
